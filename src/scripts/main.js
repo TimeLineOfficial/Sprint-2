@@ -17,9 +17,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   initDashboardRenderer();
   setupNewsletterForm();
 
-  // 2. Hydrate dynamic payload from JSON
+  // 2. Hydrate dynamic payload from JSON (with fallbacks for root & dist deployments)
   try {
-    const response = await fetch('./data/landing-data.json');
+    let response = await fetch('./data/landing-data.json');
+    if (!response.ok) {
+      response = await fetch('./public/data/landing-data.json');
+    }
     if (!response.ok) {
       throw new Error(`Failed to load landing-data.json (Status: ${response.status})`);
     }
