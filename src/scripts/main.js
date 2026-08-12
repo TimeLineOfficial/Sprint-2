@@ -6,6 +6,7 @@ import { initFeaturesRenderer } from './features-renderer.js';
 import { initPricingRenderer } from './pricing-renderer.js';
 import { initDashboardRenderer } from './dashboard-renderer.js';
 import { initToastRenderer } from './toast-renderer.js';
+import { initLeadForm } from './lead-form.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // 1. Initialize core system modules & PubSub subscribers
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initFeaturesRenderer();
   initPricingRenderer();
   initDashboardRenderer();
+  initLeadForm();
   setupNewsletterForm();
 
   // 2. Hydrate dynamic payload from JSON (with fallbacks for root & dist deployments)

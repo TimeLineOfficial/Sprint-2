@@ -42,7 +42,7 @@
 <body>
 
   <!-- ==========================================
-       HEADER & NAVIGATION INFRASTRUCTURE
+       HEADER & NAVIGATION INFRASTRUCTURE (MOBILE TOUCH OPTIMIZED)
        ========================================== -->
   <header class="c-header" id="site-header">
     <nav class="c-nav" aria-label="Main Navigation">
@@ -58,12 +58,33 @@
         <span>Corporate<span class="c-nav__brand-highlight">Brand</span></span>
       </a>
 
-      <!-- Hamburger Toggle Button (<768px Viewports) -->
-      <button class="c-nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
-        <span class="c-nav__toggle-bar"></span>
-        <span class="c-nav__toggle-bar"></span>
-        <span class="c-nav__toggle-bar"></span>
-      </button>
+      <!-- Right Header Mobile Touch Control Group -->
+      <div class="c-nav__mobile-controls">
+        <!-- Dark Mode Toggle Button (1-Tap Accessible on Phone Header & Desktop) -->
+        <button class="c-btn c-btn--icon-only" id="theme-toggle" aria-label="Switch dark mode" style="min-width: 2.75rem; min-height: 2.75rem;">
+          <svg class="c-theme-icon--moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="c-theme-icon--sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <!-- Hamburger Toggle Button (<768px Viewports) -->
+        <button class="c-nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+          <span class="c-nav__toggle-bar"></span>
+          <span class="c-nav__toggle-bar"></span>
+          <span class="c-nav__toggle-bar"></span>
+        </button>
+      </div>
 
       <!-- Navigation Links Aligned Right -->
       <div class="c-nav__menu" id="nav-menu">
@@ -71,29 +92,12 @@
           <li class="c-nav__item"><a href="#features" class="c-nav__link">Features</a></li>
           <li class="c-nav__item"><a href="#dashboard" class="c-nav__link">Platform</a></li>
           <li class="c-nav__item"><a href="#pricing" class="c-nav__link">Pricing</a></li>
+          <li class="c-nav__item"><a href="#contact" class="c-nav__link">Consultation</a></li>
           <li class="c-nav__item"><a href="#audit" class="c-nav__link">Architecture</a></li>
         </ul>
 
         <div class="c-nav__actions">
-          <!-- Dark Mode Toggle Button -->
-          <button class="c-btn c-btn--icon-only" id="theme-toggle" aria-label="Switch dark mode">
-            <svg class="c-theme-icon--moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-            <svg class="c-theme-icon--sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-          </button>
-
-          <a href="#pricing" class="c-btn c-btn--primary">Get Started</a>
+          <button type="button" class="c-btn c-btn--primary" data-action="open-modal">Request Consultation</button>
         </div>
       </div>
     </nav>
@@ -127,13 +131,13 @@
           </p>
 
           <div class="c-hero__cta-group">
-            <a href="#pricing" class="c-btn c-btn--primary c-btn--lg">
+            <button type="button" class="c-btn c-btn--primary c-btn--lg" data-action="open-modal">
               <span>Deploy Platform</span>
               <svg class="c-btn__icon c-btn__icon--arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
-            </a>
+            </button>
 
             <a href="#dashboard" class="c-btn c-btn--secondary c-btn--lg">
               <svg class="c-btn__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -276,8 +280,77 @@
       </div>
     </section>
 
+    <div class="u-section-divider"></div>
+
     <!-- ==========================================
-         LIGHTHOUSE 100 & ARCHITECTURE AUDIT CARD (SPRINT 1 & SPRINT 2 COMPLIANCE)
+         CUSTOMER LEAD / CONSULTATION DETAILS SUBMISSION SECTION
+         ========================================== -->
+    <section class="c-lead-section" id="contact">
+      <div class="c-lead-card">
+        <div class="c-lead-card__header">
+          <span class="c-lead-card__tag">Enterprise Consultation</span>
+          <h2 class="c-lead-card__title">Request Architecture Access</h2>
+          <p class="c-lead-card__subtitle">
+            Submit your corporate details to request custom platform deployment, API tokens, and dedicated solution engineering support.
+          </p>
+        </div>
+
+        <form class="c-form" id="lead-form-embedded">
+          <div class="c-form__grid">
+            <div class="c-form__group">
+              <label for="lead-name-emb" class="c-form__label">Full Name *</label>
+              <input type="text" id="lead-name-emb" name="fullName" class="c-form__input" placeholder="e.g. Alex Morgan" required />
+            </div>
+
+            <div class="c-form__group">
+              <label for="lead-email-emb" class="c-form__label">Work Email *</label>
+              <input type="email" id="lead-email-emb" name="workEmail" class="c-form__input" placeholder="alex@company.com" required />
+            </div>
+
+            <div class="c-form__group">
+              <label for="lead-company-emb" class="c-form__label">Company Name *</label>
+              <input type="text" id="lead-company-emb" name="companyName" class="c-form__input" placeholder="e.g. Acme Enterprises" required />
+            </div>
+
+            <div class="c-form__group">
+              <label for="lead-scale-emb" class="c-form__label">Engineering Team Scale</label>
+              <select id="lead-scale-emb" name="teamSize" class="c-form__select">
+                <option value="1-10">1-10 Developers</option>
+                <option value="11-50" selected>11-50 Developers</option>
+                <option value="51-250">51-250 Developers</option>
+                <option value="250+">250+ Enterprise Scale</option>
+              </select>
+            </div>
+
+            <div class="c-form__group c-form__group--full">
+              <label for="lead-focus-emb" class="c-form__label">Primary Architecture Focus</label>
+              <select id="lead-focus-emb" name="projectScope" class="c-form__select">
+                <option value="Real-Time Data Pipeline">Real-Time Data Pipeline & Analytics</option>
+                <option value="Edge CDN Delivery">Edge Delivery CDN & Sub-50ms TTFB</option>
+                <option value="Performance & CSS Audit">BEM CSS Integrity & Lighthouse 100</option>
+                <option value="Full Infrastructure Suite">Full Enterprise Suite Integration</option>
+              </select>
+            </div>
+
+            <div class="c-form__group c-form__group--full">
+              <label for="lead-msg-emb" class="c-form__label">Project Requirements / Infrastructure Scope</label>
+              <textarea id="lead-msg-emb" name="requirements" class="c-form__textarea" placeholder="Tell us about your digital marketing infrastructure requirements and target timelines..."></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="c-btn c-btn--primary c-btn--lg c-form__submit">
+            <span>Submit Enterprise Inquiry</span>
+            <svg class="c-btn__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         LIGHTHOUSE 100 & ARCHITECTURE AUDIT CARD
          ========================================== -->
     <section class="c-audit" id="audit">
       <div class="c-audit__card">
@@ -346,13 +419,71 @@
             <svg class="c-audit__check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            Native Lazy Loading & Asset Compression
+            Mobile Touch Optimized & Accessible Controls
           </div>
         </div>
       </div>
     </section>
 
   </main>
+
+  <!-- ==========================================
+       ACCESSIBLE MODAL OVERLAY (FOR INTERACTIVE CTA POPUP)
+       ========================================== -->
+  <div class="c-modal-overlay" id="lead-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="c-modal">
+      <button class="c-modal__close" id="lead-modal-close" aria-label="Close dialog">&times;</button>
+      
+      <div class="c-lead-card__header" style="margin-bottom: var(--space-lg);">
+        <span class="c-lead-card__tag">Quick Request</span>
+        <h3 class="c-lead-card__title" id="modal-title" style="font-size: var(--font-size-2xl);">Enterprise Consultation</h3>
+        <p class="c-lead-card__subtitle" style="font-size: var(--font-size-sm);">Fill out your information to request custom platform deployment.</p>
+      </div>
+
+      <form class="c-form" id="lead-form-modal">
+        <div class="c-form__grid">
+          <div class="c-form__group">
+            <label for="lead-name-modal" class="c-form__label">Full Name *</label>
+            <input type="text" id="lead-name-modal" name="fullName" class="c-form__input" placeholder="e.g. Sarah Jenkins" required />
+          </div>
+
+          <div class="c-form__group">
+            <label for="lead-email-modal" class="c-form__label">Work Email *</label>
+            <input type="email" id="lead-email-modal" name="workEmail" class="c-form__input" placeholder="name@company.com" required />
+          </div>
+
+          <div class="c-form__group">
+            <label for="lead-company-modal" class="c-form__label">Company Name *</label>
+            <input type="text" id="lead-company-modal" name="companyName" class="c-form__input" placeholder="e.g. Acme Corp" required />
+          </div>
+
+          <div class="c-form__group">
+            <label for="lead-scale-modal" class="c-form__label">Team Scale</label>
+            <select id="lead-scale-modal" name="teamSize" class="c-form__select">
+              <option value="1-10">1-10 Developers</option>
+              <option value="11-50" selected>11-50 Developers</option>
+              <option value="51-250">51-250 Developers</option>
+              <option value="250+">250+ Enterprise Scale</option>
+            </select>
+          </div>
+
+          <div class="c-form__group c-form__group--full">
+            <label for="lead-focus-modal" class="c-form__label">Architecture Focus</label>
+            <select id="lead-focus-modal" name="projectScope" class="c-form__select">
+              <option value="Real-Time Data Pipeline">Real-Time Data Pipeline & Analytics</option>
+              <option value="Edge CDN Delivery">Edge Delivery CDN & Sub-50ms TTFB</option>
+              <option value="Performance & CSS Audit">BEM CSS Integrity & Lighthouse 100</option>
+              <option value="Full Infrastructure Suite">Full Enterprise Suite Integration</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="c-btn c-btn--primary c-btn--lg c-form__submit" style="margin-top: var(--space-md);">
+          <span>Submit Request</span>
+        </button>
+      </form>
+    </div>
+  </div>
 
   <!-- ==========================================
        SEMANTIC FOOTER COMPONENT
@@ -409,7 +540,7 @@
 
     <div class="c-footer__bottom">
       <p class="c-footer__copy">
-        © 2026 The Corporate Brand. Sprint 1 & Sprint 2 Engineering Directives Fulfilled.
+        © 2026 The Corporate Brand. Mobile Touch & Customer Submission Infrastructure Verified.
       </p>
 
       <div class="c-footer__socials">

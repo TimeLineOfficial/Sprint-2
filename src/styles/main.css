@@ -11,6 +11,8 @@
 @import './components/filter-bar.css';
 @import './components/features.css';
 @import './components/pricing.css';
+@import './components/contact-form.css';
+@import './components/modal.css';
 @import './components/audit.css';
 @import './components/toast.css';
 @import './components/footer.css';
