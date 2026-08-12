@@ -1,11 +1,17 @@
 /**
  * Navigation & Mobile Hamburger Menu Controller
+ * Ensures clean lifecycle management and zero memory leaks.
  */
+
+let activeListeners = [];
 
 export function initNavigation() {
   const navToggle = document.getElementById('nav-toggle');
   const navMenu = document.getElementById('nav-menu');
   const navLinks = document.querySelectorAll('.c-nav__link');
+
+  // Clean previous event listeners if re-initialized
+  destroyNavigationListeners();
 
   if (!navToggle || !navMenu) return;
 
@@ -16,29 +22,49 @@ export function initNavigation() {
     navMenu.classList.toggle('c-nav__menu--open', newState);
     navToggle.setAttribute('aria-expanded', newState.toString());
     
-    // Prevent background body scroll when mobile menu is active
+    // Prevent background body scroll when mobile menu is open
     if (window.innerWidth < 768) {
       document.body.style.overflow = newState ? 'hidden' : '';
     }
   }
 
-  navToggle.addEventListener('click', () => toggleMenu());
+  const handleToggleClick = (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  };
+
+  navToggle.addEventListener('click', handleToggleClick);
+  activeListeners.push({ element: navToggle, type: 'click', handler: handleToggleClick });
 
   // Close menu when clicking any nav link
   navLinks.forEach(link => {
-    link.addEventListener('click', () => {
+    const handleLinkClick = () => {
       if (window.innerWidth < 768) {
         toggleMenu(false);
       }
-    });
+    };
+    link.addEventListener('click', handleLinkClick);
+    activeListeners.push({ element: link, type: 'click', handler: handleLinkClick });
   });
 
-  // Handle window resize
-  window.addEventListener('resize', () => {
+  // Handle window resize cleanly
+  const handleResize = () => {
     if (window.innerWidth >= 768) {
       navMenu.classList.remove('c-nav__menu--open');
       navToggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     }
+  };
+
+  window.addEventListener('resize', handleResize);
+  activeListeners.push({ element: window, type: 'resize', handler: handleResize });
+}
+
+export function destroyNavigationListeners() {
+  activeListeners.forEach(({ element, type, handler }) => {
+    if (element && element.removeEventListener) {
+      element.removeEventListener(type, handler);
+    }
   });
+  activeListeners = [];
 }

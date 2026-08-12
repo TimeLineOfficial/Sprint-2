@@ -1,0 +1,161 @@
+{
+  "brand": {
+    "name": "Corporate",
+    "nameHighlight": "Brand",
+    "tagline": "Next-Generation Digital Marketing Infrastructure",
+    "version": "V2.4 Enterprise"
+  },
+  "hero": {
+    "badgeText": "Enterprise Digital Marketing V2.4 Released",
+    "headlinePrefix": "Architecting the Future of ",
+    "headlineGradient": "Digital Growth",
+    "headlineSuffix": "",
+    "subtitle": "Empower your marketing infrastructure with real-time attribution analytics, high-contrast visual automation, and sub-millisecond edge delivery.",
+    "primaryCta": {
+      "text": "Deploy Platform",
+      "href": "#pricing"
+    },
+    "secondaryCta": {
+      "text": "Explore Platform Demo",
+      "href": "#dashboard"
+    },
+    "socialProof": {
+      "ratingText": "500+ Enterprise Leaders",
+      "suffix": "worldwide"
+    }
+  },
+  "metrics": {
+    "activeUsers": 14890,
+    "activeUsersBadge": "↑ +18.4%",
+    "conversionRate": "4.82%",
+    "conversionBadge": "↑ +3.2%",
+    "roi": "384%",
+    "roiBadge": "↑ +42%"
+  },
+  "categories": [
+    { "id": "all", "label": "All Architectures" },
+    { "id": "analytics", "label": "Real-Time Analytics" },
+    { "id": "infrastructure", "label": "Edge Infrastructure" },
+    { "id": "performance", "label": "Performance & CSS" },
+    { "id": "security", "label": "State & Security" }
+  ],
+  "features": [
+    {
+      "id": "feat-1",
+      "category": "analytics",
+      "title": "Real-Time Data Pipeline",
+      "description": "Stream user engagement signals directly to your marketing cloud with zero latency and instant client-side event dispatching.",
+      "badge": "Sub-10ms",
+      "icon": "zap"
+    },
+    {
+      "id": "feat-2",
+      "category": "infrastructure",
+      "title": "Edge Delivery CDN",
+      "description": "Deploy landing page modules across 280+ edge nodes globally. Sub-50ms TTFB guaranteed under high peak loads.",
+      "badge": "280+ POPs",
+      "icon": "globe"
+    },
+    {
+      "id": "feat-3",
+      "category": "performance",
+      "title": "BEM CSS Integrity",
+      "description": "Strict Block-Element-Modifier scoping prevents global stylesheet pollution and eliminates cascading specificity bugs.",
+      "badge": "Zero Leak",
+      "icon": "shield"
+    },
+    {
+      "id": "feat-4",
+      "category": "performance",
+      "title": "Fluid Responsive Engine",
+      "description": "Uses relative CSS units (rem/em) and fluid `clamp()` typography to adapt seamlessly from 320px mobile up to 4K displays.",
+      "badge": "Fluid UI",
+      "icon": "monitor"
+    },
+    {
+      "id": "feat-5",
+      "category": "security",
+      "title": "System Dark Mode Engine",
+      "description": "Automatic OS theme detection via `prefers-color-scheme` media query with instant persistent state switching.",
+      "badge": "Flicker-Free",
+      "icon": "moon"
+    },
+    {
+      "id": "feat-6",
+      "category": "security",
+      "title": "PubSub Custom Event Bus",
+      "description": "Decoupled Publish-Subscribe architecture that isolates state mutations from DOM presentation logic with memory-safe listeners.",
+      "badge": "PubSub Core",
+      "icon": "code"
+    }
+  ],
+  "pricing": [
+    {
+      "id": "plan-starter",
+      "name": "Starter Module",
+      "monthlyPrice": 29,
+      "annualPrice": 24,
+      "isPopular": false,
+      "features": [
+        "Up to 100,000 Monthly Impressions",
+        "Responsive Hamburger Navigation",
+        "System Dark Mode Integration",
+        "Basic Event Logging"
+      ],
+      "ctaText": "Select Starter",
+      "ctaVariant": "outline"
+    },
+    {
+      "id": "plan-pro",
+      "name": "Professional Infrastructure",
+      "monthlyPrice": 79,
+      "annualPrice": 64,
+      "isPopular": true,
+      "badgeText": "Most Popular",
+      "features": [
+        "1,000,000 Monthly Impressions",
+        "BEM CSS Architecture Compliance",
+        "Lighthouse 100 Performance Audit",
+        "Zero CLS Asset Pipeline",
+        "PubSub State Decoupling"
+      ],
+      "ctaText": "Deploy Pro Tier",
+      "ctaVariant": "primary"
+    },
+    {
+      "id": "plan-enterprise",
+      "name": "Enterprise Suite",
+      "monthlyPrice": 199,
+      "annualPrice": 159,
+      "isPopular": false,
+      "features": [
+        "Unlimited Monthly Impressions",
+        "Custom Edge Deployment & CDN",
+        "24/7 Priority Solution Engineer Support",
+        "Custom Event Emitter Integration",
+        "Memory Leak Profiling Guarantee"
+      ],
+      "ctaText": "Contact Enterprise",
+      "ctaVariant": "outline"
+    }
+  ],
+  "audit": {
+    "title": "Google Lighthouse 100/100 Audit Verification",
+    "subtitle": "Verified production metrics across all 4 Google Lighthouse audit categories.",
+    "badgeStatus": "Phase 3 Compliance Verified",
+    "scores": [
+      { "category": "Performance", "score": 100 },
+      { "category": "Accessibility", "score": 100 },
+      { "category": "Best Practices", "score": 100 },
+      { "category": "SEO Audit", "score": 100 }
+    ],
+    "checklist": [
+      "Zero Cumulative Layout Shift (CLS)",
+      "Strict BEM Methodology Naming",
+      "System Dark Mode State Persistence",
+      "Native Lazy Loading & Asset Compression",
+      "Memory Leak Free PubSub Event Emitter",
+      "Dynamic JSON Payload State Hydration"
+    ]
+  }
+}

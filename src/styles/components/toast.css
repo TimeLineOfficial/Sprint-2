@@ -1,0 +1,95 @@
+/* ==========================================
+   TOAST NOTIFICATION COMPONENT (BEM ARCHITECTURE)
+   ========================================== */
+
+.c-toast-container {
+  position: fixed;
+  bottom: var(--space-xl);
+  right: var(--space-xl);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  max-width: 24rem;
+  pointer-events: none;
+}
+
+.c-toast {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 0.875rem 1.25rem;
+  background: var(--bg-surface);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  pointer-events: auto;
+  animation: slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.c-toast--hiding {
+  animation: fadeOutDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.c-toast__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.c-toast--success .c-toast__icon {
+  color: var(--color-success);
+}
+
+.c-toast--info .c-toast__icon {
+  color: var(--color-primary);
+}
+
+.c-toast--warning .c-toast__icon {
+  color: var(--color-warning);
+}
+
+.c-toast__message {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.c-toast__close {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0 0.25rem;
+  line-height: 1;
+}
+
+.c-toast__close:hover {
+  color: var(--text-main);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.95);
+  }
+}

@@ -1,63 +1,55 @@
-/**
- * Theme Manager Module (Dark / Light Mode)
- * Supports system preferences & persistent localStorage state
- */
+import { stateManager, EVENTS } from './state.js';
+import { eventBus } from './pubsub.js';
 
-const THEME_KEY = 'corporate_brand_theme';
+let cleanupFn = null;
 
 export function initTheme() {
   const toggleBtn = document.getElementById('theme-toggle');
-  
-  // Determine initial theme
-  const storedTheme = localStorage.getItem(THEME_KEY);
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initialTheme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
 
-  // Apply initial theme
-  applyTheme(initialTheme);
+  // Clean previous subscription if re-initialized to prevent leaks
+  if (cleanupFn) cleanupFn();
+
+  // Apply initial theme from state
+  const initialTheme = stateManager.get('theme');
+  applyThemeDOM(initialTheme);
+
+  // Subscribe to theme mutations via PubSub
+  cleanupFn = eventBus.subscribe(EVENTS.THEME_CHANGED, ({ theme }) => {
+    applyThemeDOM(theme);
+  });
 
   if (toggleBtn) {
-    // Remove old listeners by replacing or directly setting onclick
     toggleBtn.onclick = (e) => {
       e.preventDefault();
-      const currentActiveTheme = document.documentElement.getAttribute('data-theme') || 'light';
-      const nextTheme = currentActiveTheme === 'dark' ? 'light' : 'dark';
-      
-      applyTheme(nextTheme);
-      localStorage.setItem(THEME_KEY, nextTheme);
+      stateManager.toggleTheme();
     };
   }
 
-  // Listen for OS system theme changes if user hasn't explicitly set preference
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (!localStorage.getItem(THEME_KEY)) {
-      applyTheme(e.matches ? 'dark' : 'light');
-    }
-  });
+  // Listen for OS system theme changes if user hasn't explicitly saved preference
+  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  const handleOSThemeChange = (e) => {
+    stateManager.setTheme(e.matches ? 'dark' : 'light');
+  };
+
+  mediaQuery.addEventListener('change', handleOSThemeChange);
 }
 
-function applyTheme(theme) {
-  // Set data-theme on html root element
+function applyThemeDOM(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   document.documentElement.style.colorScheme = theme;
 
   const toggleBtn = document.getElementById('theme-toggle');
-  
   if (toggleBtn) {
-    toggleBtn.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
+    const isDark = theme === 'dark';
+    toggleBtn.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} mode`);
     toggleBtn.setAttribute('title', `Current mode: ${theme}`);
 
     const sunIcon = toggleBtn.querySelector('.c-theme-icon--sun');
     const moonIcon = toggleBtn.querySelector('.c-theme-icon--moon');
-    
+
     if (sunIcon && moonIcon) {
-      if (theme === 'dark') {
-        sunIcon.style.display = 'inline-block';
-        moonIcon.style.display = 'none';
-      } else {
-        sunIcon.style.display = 'none';
-        moonIcon.style.display = 'inline-block';
-      }
+      sunIcon.style.display = isDark ? 'inline-block' : 'none';
+      moonIcon.style.display = isDark ? 'none' : 'inline-block';
     }
   }
 }

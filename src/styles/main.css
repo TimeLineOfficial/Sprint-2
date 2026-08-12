@@ -1,5 +1,5 @@
 /* ==========================================
-   CENTRAL CSS MANIFEST
+   CENTRAL CSS MANIFEST (BEM METHODOLOGY)
    ========================================== */
 
 @import './variables.css';
@@ -8,12 +8,14 @@
 @import './components/nav.css';
 @import './components/hero.css';
 @import './components/dashboard-preview.css';
+@import './components/filter-bar.css';
 @import './components/features.css';
 @import './components/pricing.css';
 @import './components/audit.css';
+@import './components/toast.css';
 @import './components/footer.css';
 
-/* Utility Section Spacing */
+/* Utility Section Divider */
 .u-section-divider {
   width: 100%;
   height: 1px;

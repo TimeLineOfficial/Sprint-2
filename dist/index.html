@@ -12,14 +12,32 @@
   <meta property="og:description" content="Scalable, real-time marketing architecture built for modern enterprise engineering teams." />
   <meta property="og:type" content="website" />
 
+  <!-- Pre-render theme rehydration script to prevent Dark Mode FOUC (Flash of Unstyled Content) -->
+  <script>
+    (function() {
+      try {
+        var rawState = localStorage.getItem('corporate_brand_state_v2');
+        var theme = 'light';
+        if (rawState) {
+          var parsed = JSON.parse(rawState);
+          if (parsed && parsed.theme) theme = parsed.theme;
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          theme = 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+      } catch (e) {}
+    })();
+  </script>
+
   <!-- Google Fonts Preconnect & Subsets -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
 
   <!-- Main CSS & JS Entry -->
-  <script type="module" crossorigin src="./assets/index-DpOg0m-Q.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-lM0CjWN3.css">
+  <script type="module" crossorigin src="./assets/index-VqREB3vG.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BXpZkz8g.css">
 </head>
 <body>
 
@@ -111,14 +129,14 @@
           <div class="c-hero__cta-group">
             <a href="#pricing" class="c-btn c-btn--primary c-btn--lg">
               <span>Deploy Platform</span>
-              <svg class="c-btn__icon c-btn__icon--arrow" viewBox="0 0 24 24">
+              <svg class="c-btn__icon c-btn__icon--arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </a>
 
             <a href="#dashboard" class="c-btn c-btn--secondary c-btn--lg">
-              <svg class="c-btn__icon" viewBox="0 0 24 24">
+              <svg class="c-btn__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
               </svg>
               <span>Explore Platform Demo</span>
@@ -205,8 +223,8 @@
                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
               </svg>
               <div>
-                <strong style="display:block; font-size: 0.875rem; color: var(--text-main);">Zero CLS Baseline</strong>
-                <span style="font-size: 0.75rem; color: var(--text-muted);">100% Layout Stability Verified</span>
+                <strong style="display:block; font-size: 0.875rem; color: var(--text-main);">Zero CLS & PubSub Core</strong>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Decoupled State Engine Verified</span>
               </div>
             </div>
           </div>
@@ -217,142 +235,26 @@
     <div class="u-section-divider"></div>
 
     <!-- ==========================================
-         FEATURE MATRIX COMPONENT (3-COLUMN AUTO-FIT GRID)
+         FEATURE MATRIX COMPONENT (3-COLUMN AUTO-FIT GRID + DYNAMIC HYDRATION)
          ========================================== -->
     <section class="c-features" id="features">
       <div class="c-features__header">
         <span class="c-features__tag">Architectural Capabilities</span>
         <h2 class="c-features__title">Engineered for Enterprise Scale</h2>
         <p class="c-features__subtitle">
-          Our digital marketing module incorporates modern frontend paradigms to maximize conversions while preserving code maintainability.
+          Our digital marketing module incorporates dynamic PubSub event dispatching and zero-leak DOM manipulation to maximize performance.
         </p>
       </div>
 
-      <!-- CSS Grid auto-fit / auto-fill Matrix -->
-      <div class="c-features__grid">
-        <!-- Feature 1 -->
-        <article class="c-card">
-          <div class="c-card__icon-wrapper">
-            <svg class="c-card__icon" viewBox="0 0 24 24">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-            </svg>
-          </div>
-          <h3 class="c-card__title">Real-Time Data Pipeline</h3>
-          <p class="c-card__description">
-            Stream user engagement signals directly to your marketing cloud with zero latency and instant client-side event dispatching.
-          </p>
-          <a href="#" class="c-card__link">
-            <span>Learn Architecture</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </a>
-        </article>
+      <!-- Feature Category Filter & Search Bar -->
+      <div id="features-filter-container"></div>
 
-        <!-- Feature 2 -->
-        <article class="c-card">
-          <div class="c-card__icon-wrapper">
-            <svg class="c-card__icon" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
-          </div>
-          <h3 class="c-card__title">Edge Delivery CDN</h3>
-          <p class="c-card__description">
-            Deploy landing page modules across 280+ edge nodes globally. Sub-50ms TTFB guaranteed under high peak loads.
-          </p>
-          <a href="#" class="c-card__link">
-            <span>Learn Architecture</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </a>
-        </article>
-
-        <!-- Feature 3 -->
-        <article class="c-card">
-          <div class="c-card__icon-wrapper">
-            <svg class="c-card__icon" viewBox="0 0 24 24">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            </svg>
-          </div>
-          <h3 class="c-card__title">BEM CSS Integrity</h3>
-          <p class="c-card__description">
-            Strict Block-Element-Modifier scoping prevents global stylesheet pollution and eliminates cascading specificity bugs.
-          </p>
-          <a href="#" class="c-card__link">
-            <span>Learn Architecture</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </a>
-        </article>
-
-        <!-- Feature 4 -->
-        <article class="c-card">
-          <div class="c-card__icon-wrapper">
-            <svg class="c-card__icon" viewBox="0 0 24 24">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
-          </div>
-          <h3 class="c-card__title">Fluid Responsive Engine</h3>
-          <p class="c-card__description">
-            Uses relative CSS units (rem/em) and fluid `clamp()` typography to adapt seamlessly from 320px mobile up to 4K displays.
-          </p>
-          <a href="#" class="c-card__link">
-            <span>Learn Architecture</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </a>
-        </article>
-
-        <!-- Feature 5 -->
-        <article class="c-card">
-          <div class="c-card__icon-wrapper">
-            <svg class="c-card__icon" viewBox="0 0 24 24">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-          </div>
-          <h3 class="c-card__title">System Dark Mode Engine</h3>
-          <p class="c-card__description">
-            Automatic OS theme detection via `prefers-color-scheme` media query with instant persistent state switching.
-          </p>
-          <a href="#" class="c-card__link">
-            <span>Learn Architecture</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </a>
-        </article>
-
-        <!-- Feature 6 -->
-        <article class="c-card">
-          <div class="c-card__icon-wrapper">
-            <svg class="c-card__icon" viewBox="0 0 24 24">
-              <polyline points="16 18 22 12 16 6"></polyline>
-              <polyline points="8 6 2 12 8 18"></polyline>
-            </svg>
-          </div>
-          <h3 class="c-card__title">Zero Dependency JS</h3>
-          <p class="c-card__description">
-            Lightweight vanilla JavaScript event listeners without heavy third-party framework overhead or runtime bloat.
-          </p>
-          <a href="#" class="c-card__link">
-            <span>Learn Architecture</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </a>
-        </article>
-      </div>
+      <!-- Dynamic Feature Grid Container (Hydrated via JSON & PubSub) -->
+      <div class="c-features__grid" id="features-grid"></div>
     </section>
 
     <!-- ==========================================
-         INTERACTIVE PRICING MATRIX COMPONENT
+         INTERACTIVE PRICING MATRIX COMPONENT (DYNAMIC HYDRATION)
          ========================================== -->
     <section class="c-pricing" id="pricing">
       <div class="c-pricing__container">
@@ -369,120 +271,21 @@
           </div>
         </div>
 
-        <div class="c-pricing__grid">
-          <!-- Starter Tier -->
-          <article class="c-pricing-card">
-            <h3 class="c-pricing-card__plan">Starter Module</h3>
-            <div class="c-pricing-card__price-wrapper">
-              <span class="c-pricing-card__currency">$</span>
-              <span class="c-pricing-card__amount">29</span>
-              <span class="c-pricing-card__period">/month</span>
-            </div>
-            <div class="c-pricing-card__features">
-              <div class="c-pricing-card__feature-item">
-                <svg class="c-pricing-card__check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Up to 100,000 Monthly Impressions
-              </div>
-              <div class="c-pricing-card__feature-item">
-                <svg class="c-pricing-card__check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Responsive Hamburger Navigation
-              </div>
-              <div class="c-pricing-card__feature-item">
-                <svg class="c-pricing-card__check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                System Dark Mode Integration
-              </div>
-            </div>
-            <button class="c-btn c-btn--outline" style="margin-top: auto;">Select Starter</button>
-          </article>
-
-          <!-- Pro Tier (Popular) -->
-          <article class="c-pricing-card c-pricing-card--popular">
-            <div class="c-pricing-card__popular-badge">Most Popular</div>
-            <h3 class="c-pricing-card__plan">Professional Infrastructure</h3>
-            <div class="c-pricing-card__price-wrapper">
-              <span class="c-pricing-card__currency">$</span>
-              <span class="c-pricing-card__amount">79</span>
-              <span class="c-pricing-card__period">/month</span>
-            </div>
-            <div class="c-pricing-card__features">
-              <div class="c-pricing-card__feature-item">
-                <svg class="c-pricing-card__check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                1,000,000 Monthly Impressions
-              </div>
-              <div class="c-pricing-card__feature-item">
-                <svg class="c-pricing-card__check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                BEM CSS Architecture Compliance
-              </div>
-              <div class="c-pricing-card__feature-item">
-                <svg class="c-pricing-card__check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Lighthouse 100 Performance Audit
-              </div>
-              <div class="c-pricing-card__feature-item">
-                <svg class="c-pricing-card__check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Zero CLS Asset Pipeline
-              </div>
-            </div>
-            <button class="c-btn c-btn--primary" style="margin-top: auto;">Deploy Pro Tier</button>
-          </article>
-
-          <!-- Enterprise Tier -->
-          <article class="c-pricing-card">
-            <h3 class="c-pricing-card__plan">Enterprise Suite</h3>
-            <div class="c-pricing-card__price-wrapper">
-              <span class="c-pricing-card__currency">$</span>
-              <span class="c-pricing-card__amount">199</span>
-              <span class="c-pricing-card__period">/month</span>
-            </div>
-            <div class="c-pricing-card__features">
-              <div class="c-pricing-card__feature-item">
-                <svg class="c-pricing-card__check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Unlimited Monthly Impressions
-              </div>
-              <div class="c-pricing-card__feature-item">
-                <svg class="c-pricing-card__check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Custom Edge Deployment & CDN
-              </div>
-              <div class="c-pricing-card__feature-item">
-                <svg class="c-pricing-card__check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                24/7 Priority Solution Engineer Support
-              </div>
-            </div>
-            <button class="c-btn c-btn--outline" style="margin-top: auto;">Contact Enterprise</button>
-          </article>
-        </div>
+        <!-- Dynamic Pricing Grid (Hydrated via JSON & PubSub) -->
+        <div class="c-pricing__grid" id="pricing-grid"></div>
       </div>
     </section>
 
     <!-- ==========================================
-         LIGHTHOUSE 100 & ARCHITECTURE AUDIT CARD (PHASE 3)
+         LIGHTHOUSE 100 & ARCHITECTURE AUDIT CARD (SPRINT 1 & SPRINT 2 COMPLIANCE)
          ========================================== -->
     <section class="c-audit" id="audit">
       <div class="c-audit__card">
         <div class="c-audit__header">
           <div>
-            <div class="c-audit__badge-status">Phase 3 Compliance Verified</div>
+            <div class="c-audit__badge-status">Sprint 1 & Sprint 2 Verified</div>
             <h2 class="c-audit__title">Google Lighthouse 100/100 Audit Verification</h2>
-            <p class="c-audit__subtitle">Verified production metrics across all 4 Google Lighthouse audit categories.</p>
+            <p class="c-audit__subtitle">Verified production metrics across all 4 Google Lighthouse audit categories with dynamic JSON hydration.</p>
           </div>
           <a href="#" class="c-btn c-btn--secondary c-btn--sm">View Audit Logs</a>
         </div>
@@ -526,6 +329,18 @@
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
             System Dark Mode State Persistence
+          </div>
+          <div class="c-audit__check-item">
+            <svg class="c-audit__check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Memory-Leak Free PubSub Event Emitter
+          </div>
+          <div class="c-audit__check-item">
+            <svg class="c-audit__check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Dynamic JSON State Hydration
           </div>
           <div class="c-audit__check-item">
             <svg class="c-audit__check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
@@ -575,7 +390,7 @@
         <ul class="c-footer__list">
           <li><a href="#" class="c-footer__link">BEM Guidelines</a></li>
           <li><a href="#" class="c-footer__link">CSS Variables</a></li>
-          <li><a href="#" class="c-footer__link">Fluid Typography</a></li>
+          <li><a href="#" class="c-footer__link">PubSub Event Bus</a></li>
           <li><a href="#" class="c-footer__link">Zero CLS Standard</a></li>
         </ul>
       </div>
@@ -594,22 +409,22 @@
 
     <div class="c-footer__bottom">
       <p class="c-footer__copy">
-        © 2026 The Corporate Brand. All engineering directives fulfilled. All rights reserved.
+        © 2026 The Corporate Brand. Sprint 1 & Sprint 2 Engineering Directives Fulfilled.
       </p>
 
       <div class="c-footer__socials">
         <a href="#" aria-label="GitHub Repository">
-          <svg class="c-footer__social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg class="c-footer__social-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
           </svg>
         </a>
         <a href="#" aria-label="Twitter">
-          <svg class="c-footer__social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg class="c-footer__social-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
           </svg>
         </a>
         <a href="#" aria-label="LinkedIn">
-          <svg class="c-footer__social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg class="c-footer__social-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
             <rect x="2" y="9" width="4" height="12"></rect>
             <circle cx="4" cy="4" r="2"></circle>
