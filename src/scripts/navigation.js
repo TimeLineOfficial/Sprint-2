@@ -1,6 +1,6 @@
 /**
  * Navigation & Mobile Hamburger Menu Controller
- * Ensures clean lifecycle management and zero memory leaks.
+ * Ensures clean lifecycle management, immediate menu closure on link click, and zero memory leaks.
  */
 
 let activeListeners = [];
@@ -8,23 +8,22 @@ let activeListeners = [];
 export function initNavigation() {
   const navToggle = document.getElementById('nav-toggle');
   const navMenu = document.getElementById('nav-menu');
-  const navLinks = document.querySelectorAll('.c-nav__link');
 
   // Clean previous event listeners if re-initialized
   destroyNavigationListeners();
 
   if (!navToggle || !navMenu) return;
 
-  function toggleMenu(open) {
-    const isOpen = open !== undefined ? open : navMenu.classList.contains('c-nav__menu--open');
-    const newState = !isOpen;
+  function toggleMenu(forceState) {
+    const isCurrentlyOpen = navMenu.classList.contains('c-nav__menu--open');
+    const nextState = forceState !== undefined ? forceState : !isCurrentlyOpen;
 
-    navMenu.classList.toggle('c-nav__menu--open', newState);
-    navToggle.setAttribute('aria-expanded', newState.toString());
+    navMenu.classList.toggle('c-nav__menu--open', nextState);
+    navToggle.setAttribute('aria-expanded', nextState.toString());
     
     // Prevent background body scroll when mobile menu is open
     if (window.innerWidth < 768) {
-      document.body.style.overflow = newState ? 'hidden' : '';
+      document.body.style.overflow = nextState ? 'hidden' : '';
     }
   }
 
@@ -36,11 +35,12 @@ export function initNavigation() {
   navToggle.addEventListener('click', handleToggleClick);
   activeListeners.push({ element: navToggle, type: 'click', handler: handleToggleClick });
 
-  // Close menu when clicking any nav link
-  navLinks.forEach(link => {
+  // Close menu immediately when clicking ANY link or button inside the navigation drawer
+  const allDrawerLinks = navMenu.querySelectorAll('a, button');
+  allDrawerLinks.forEach(link => {
     const handleLinkClick = () => {
       if (window.innerWidth < 768) {
-        toggleMenu(false);
+        toggleMenu(false); // Force close menu on phone view
       }
     };
     link.addEventListener('click', handleLinkClick);
