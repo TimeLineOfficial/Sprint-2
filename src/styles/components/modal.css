@@ -1,5 +1,5 @@
 /* ==========================================
-   ENTERPRISE MODAL DIALOG COMPONENT (BEM)
+   ENTERPRISE MODAL DIALOG COMPONENT (MOBILE OPTIMIZED)
    ========================================== */
 
 .c-modal-overlay {
@@ -8,10 +8,10 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1000;
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  z-index: 10000; /* Extremely high z-index to overlay over mobile nav */
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,14 +29,15 @@
 .c-modal {
   position: relative;
   width: 100%;
-  max-width: 36rem;
-  max-height: 90vh;
+  max-width: 38rem;
+  max-height: 88vh;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xl);
-  padding: var(--space-2xl);
+  padding: var(--space-xl);
   transform: translateY(1.5rem) scale(0.96);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -47,23 +48,40 @@
 
 .c-modal__close {
   position: absolute;
-  top: var(--space-lg);
-  right: var(--space-lg);
-  width: 2.5rem;
-  height: 2.5rem;
+  top: var(--space-md);
+  right: var(--space-md);
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: var(--radius-full);
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-color);
-  color: var(--text-muted);
-  font-size: 1.25rem;
+  color: var(--text-main);
+  font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  z-index: 10;
   transition: all var(--transition-fast);
+  touch-action: manipulation;
 }
 
-.c-modal__close:hover {
-  color: var(--text-main);
+.c-modal__close:hover,
+.c-modal__close:active {
+  color: var(--color-primary);
   background: var(--border-color);
+}
+
+@media (max-width: 639.98px) {
+  .c-modal-overlay {
+    padding: 0.5rem;
+    align-items: flex-end; /* Mobile drawer style bottom sheet */
+  }
+
+  .c-modal {
+    max-height: 85vh;
+    padding: 1.25rem 1rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 }

@@ -1,5 +1,5 @@
 /* ==========================================
-   CUSTOMER DETAILS FORM COMPONENT (BEM)
+   CUSTOMER DETAILS FORM COMPONENT (MOBILE & FINGER TOUCH OPTIMIZED)
    ========================================== */
 
 .c-lead-section {
@@ -79,12 +79,6 @@
   gap: var(--space-md);
 }
 
-@media (max-width: 639.98px) {
-  .c-form__grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .c-form__group {
   display: flex;
   flex-direction: column;
@@ -105,15 +99,16 @@
 .c-form__select,
 .c-form__textarea {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.875rem 1rem;
   font-family: var(--font-family-base);
-  font-size: var(--font-size-sm);
+  font-size: 1rem; /* 16px to prevent iOS & Android auto-zoom glitches */
   color: var(--text-main);
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   outline: none;
   transition: all var(--transition-fast);
+  box-sizing: border-box;
 }
 
 .c-form__input:focus,
@@ -139,6 +134,9 @@
 
 .c-form__submit {
   margin-top: var(--space-sm);
+  min-height: 3.25rem; /* Large touch target for fingers */
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .c-form__success {
@@ -160,4 +158,53 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* STICKY MOBILE FLOATING FORM BAR (<768px) */
+.c-mobile-sticky-bar {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .c-lead-card {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .c-lead-card__title {
+    font-size: 1.5rem;
+  }
+
+  .c-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Fixed Floating Bar on Mobile Phone Screen for Instant 1-Tap Form Filling */
+  .c-mobile-sticky-bar {
+    position: fixed;
+    bottom: var(--space-md);
+    left: var(--space-md);
+    right: var(--space-md);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .c-mobile-sticky-bar__btn {
+    pointer-events: auto;
+    width: 100%;
+    max-width: 24rem;
+    min-height: 3.25rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
 }

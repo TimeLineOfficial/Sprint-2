@@ -2,7 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <title>The Corporate Brand — Enterprise Digital Marketing Infrastructure</title>
   <meta name="description" content="Next-generation digital marketing infrastructure powering enterprise growth, real-time analytics, and automated attribution." />
   <meta name="theme-color" content="#2563EB" />
@@ -36,13 +36,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
 
   <!-- Main CSS & JS Entry -->
-  <script type="module" crossorigin src="./assets/index-B8fn6pzn.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-Dg3GOB9M.css">
+  <script type="module" crossorigin src="./assets/index-BIBhBgQQ.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-e3dX1T8M.css">
 </head>
 <body>
 
   <!-- ==========================================
-       HEADER & NAVIGATION INFRASTRUCTURE (MOBILE TOUCH OPTIMIZED)
+       HEADER & NAVIGATION INFRASTRUCTURE (ALWAYS-VISIBLE THEME SWITCHER)
        ========================================== -->
   <header class="c-header" id="site-header">
     <nav class="c-nav" aria-label="Main Navigation">
@@ -58,14 +58,14 @@
         <span>Corporate<span class="c-nav__brand-highlight">Brand</span></span>
       </a>
 
-      <!-- Right Header Mobile Touch Control Group -->
-      <div class="c-nav__mobile-controls">
-        <!-- Dark Mode Toggle Button (1-Tap Accessible on Phone Header & Desktop) -->
-        <button class="c-btn c-btn--icon-only" id="theme-toggle" aria-label="Switch dark mode" style="min-width: 2.75rem; min-height: 2.75rem;">
-          <svg class="c-theme-icon--moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Right Header Controls Group (ALWAYS-VISIBLE Theme Toggle + Hamburger on Mobile) -->
+      <div class="c-nav__header-controls">
+        <!-- Dark/Light Theme Button (Visible Directly on Phone Screen Header!) -->
+        <button class="c-theme-btn" id="theme-toggle" aria-label="Switch Light or Dark Mode">
+          <svg class="c-theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
-          <svg class="c-theme-icon--sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+          <svg class="c-theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -76,6 +76,7 @@
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
+          <span class="c-theme-btn__label">Theme</span>
         </button>
 
         <!-- Hamburger Toggle Button (<768px Viewports) -->
@@ -86,13 +87,13 @@
         </button>
       </div>
 
-      <!-- Navigation Links Aligned Right -->
+      <!-- Navigation Links Menu -->
       <div class="c-nav__menu" id="nav-menu">
         <ul class="c-nav__list">
           <li class="c-nav__item"><a href="#features" class="c-nav__link">Features</a></li>
           <li class="c-nav__item"><a href="#dashboard" class="c-nav__link">Platform</a></li>
           <li class="c-nav__item"><a href="#pricing" class="c-nav__link">Pricing</a></li>
-          <li class="c-nav__item"><a href="#contact" class="c-nav__link">Consultation</a></li>
+          <li class="c-nav__item"><a href="#contact" class="c-nav__link">Fill Customer Form</a></li>
           <li class="c-nav__item"><a href="#audit" class="c-nav__link">Architecture</a></li>
         </ul>
 
@@ -139,11 +140,14 @@
               </svg>
             </button>
 
-            <a href="#dashboard" class="c-btn c-btn--secondary c-btn--lg">
+            <a href="#contact" class="c-btn c-btn--secondary c-btn--lg">
               <svg class="c-btn__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
               </svg>
-              <span>Explore Platform Demo</span>
+              <span>Fill Customer Form</span>
             </a>
           </div>
 
@@ -288,10 +292,10 @@
     <section class="c-lead-section" id="contact">
       <div class="c-lead-card">
         <div class="c-lead-card__header">
-          <span class="c-lead-card__tag">Enterprise Consultation</span>
-          <h2 class="c-lead-card__title">Request Architecture Access</h2>
+          <span class="c-lead-card__tag">Customer Details Submission</span>
+          <h2 class="c-lead-card__title">Submit Your Information</h2>
           <p class="c-lead-card__subtitle">
-            Submit your corporate details to request custom platform deployment, API tokens, and dedicated solution engineering support.
+            Fill out your details below to request custom platform deployment, API tokens, and dedicated solution engineering support.
           </p>
         </div>
 
@@ -339,7 +343,7 @@
           </div>
 
           <button type="submit" class="c-btn c-btn--primary c-btn--lg c-form__submit">
-            <span>Submit Enterprise Inquiry</span>
+            <span>Submit Customer Details</span>
             <svg class="c-btn__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
@@ -419,13 +423,29 @@
             <svg class="c-audit__check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            Mobile Touch Optimized & Accessible Controls
+            Always-Visible Theme Button & Mobile Form Access
           </div>
         </div>
       </div>
     </section>
 
   </main>
+
+  <!-- ==========================================
+       STICKY MOBILE FLOATING FORM BUTTON (<768px VIEWPORTS)
+       ========================================== -->
+  <div class="c-mobile-sticky-bar">
+    <button type="button" class="c-mobile-sticky-bar__btn" data-action="open-modal">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+        <line x1="16" y1="13" x2="8" y2="13"></line>
+        <line x1="16" y1="17" x2="8" y2="17"></line>
+        <polyline points="10 9 9 9 8 9"></polyline>
+      </svg>
+      <span>📋 Fill Customer Details Form</span>
+    </button>
+  </div>
 
   <!-- ==========================================
        ACCESSIBLE MODAL OVERLAY (FOR INTERACTIVE CTA POPUP)
@@ -435,9 +455,9 @@
       <button class="c-modal__close" id="lead-modal-close" aria-label="Close dialog">&times;</button>
       
       <div class="c-lead-card__header" style="margin-bottom: var(--space-lg);">
-        <span class="c-lead-card__tag">Quick Request</span>
-        <h3 class="c-lead-card__title" id="modal-title" style="font-size: var(--font-size-2xl);">Enterprise Consultation</h3>
-        <p class="c-lead-card__subtitle" style="font-size: var(--font-size-sm);">Fill out your information to request custom platform deployment.</p>
+        <span class="c-lead-card__tag">Quick Submission</span>
+        <h3 class="c-lead-card__title" id="modal-title" style="font-size: var(--font-size-2xl);">Submit Customer Details</h3>
+        <p class="c-lead-card__subtitle" style="font-size: var(--font-size-sm);">Fill out your information below for platform access.</p>
       </div>
 
       <form class="c-form" id="lead-form-modal">
@@ -479,7 +499,7 @@
         </div>
 
         <button type="submit" class="c-btn c-btn--primary c-btn--lg c-form__submit" style="margin-top: var(--space-md);">
-          <span>Submit Request</span>
+          <span>Submit Information</span>
         </button>
       </form>
     </div>
@@ -540,7 +560,7 @@
 
     <div class="c-footer__bottom">
       <p class="c-footer__copy">
-        © 2026 The Corporate Brand. Mobile Touch & Customer Submission Infrastructure Verified.
+        © 2026 The Corporate Brand. Always-Visible Theme & Phone Customer Form Verified.
       </p>
 
       <div class="c-footer__socials">
