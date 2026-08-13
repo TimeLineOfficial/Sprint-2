@@ -21,40 +21,47 @@ export function destroyLeadFormListeners() {
 }
 
 function setupTriggerButtons() {
-  // Bind all CTA buttons with data-open-modal attribute or contact hrefs
+  // Bind all Apply Now buttons and contact links
   const triggerSelectors = [
-    'a[href="#pricing"]',
     'a[href="#contact"]',
-    '.c-pricing-card button',
-    '[data-action="open-modal"]'
+    '[data-action="open-modal"]',
+    '.c-pricing-card button'
   ];
 
-  const buttons = document.querySelectorAll(triggerSelectors.join(','));
-  buttons.forEach(btn => {
+  const elements = document.querySelectorAll(triggerSelectors.join(','));
+  elements.forEach(el => {
     const handleTrigger = (e) => {
-      // If clicking pricing buttons or contact CTAs, open modal dialog
-      if (btn.classList.contains('c-btn--primary') || btn.classList.contains('c-btn--outline') || btn.getAttribute('href') === '#contact') {
-        e.preventDefault();
-        openLeadModal();
+      e.preventDefault();
+      e.stopPropagation();
+
+      // Close mobile navigation drawer if open
+      const navMenu = document.getElementById('nav-menu');
+      if (navMenu && navMenu.classList.contains('c-nav__menu--open')) {
+        navMenu.classList.remove('c-nav__menu--open');
+        const navToggle = document.getElementById('nav-toggle');
+        if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
       }
+
+      openLeadModal();
     };
 
-    btn.addEventListener('click', handleTrigger);
-    activeListeners.push({ element: btn, type: 'click', handler: handleTrigger });
+    el.addEventListener('click', handleTrigger);
+    activeListeners.push({ element: el, type: 'click', handler: handleTrigger });
   });
 }
 
-function openLeadModal() {
+export function openLeadModal() {
   const overlay = document.getElementById('lead-modal-overlay');
   if (!overlay) return;
 
   overlay.classList.add('c-modal-overlay--open');
+  overlay.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
 
-  // Focus first input field inside modal
+  // Focus first input field inside modal for fast typing
   const firstInput = overlay.querySelector('input');
   if (firstInput) {
-    setTimeout(() => firstInput.focus(), 150);
+    setTimeout(() => firstInput.focus(), 120);
   }
 }
 
@@ -63,6 +70,7 @@ export function closeLeadModal() {
   if (!overlay) return;
 
   overlay.classList.remove('c-modal-overlay--open');
+  overlay.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
 }
 
@@ -156,12 +164,12 @@ function processFormSubmit(formElement, isModal) {
 
   // Notify user via PubSub Event Bus
   eventBus.publish(EVENTS.TOAST_NOTIFY, {
-    message: `Thank you ${data.name}! Your enterprise inquiry has been submitted.`,
+    message: `Thank you ${data.name}! Your application has been submitted successfully.`,
     type: 'success',
     duration: 5000
   });
 
-  // Reset form and show success state UI
+  // Reset form
   formElement.reset();
 
   if (isModal) {
@@ -178,9 +186,9 @@ function processFormSubmit(formElement, isModal) {
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
         </div>
-        <h3 class="c-lead-card__title">Inquiry Submitted Successfully</h3>
+        <h3 class="c-lead-card__title">Application Submitted Successfully</h3>
         <p class="c-lead-card__subtitle">Our Solutions Engineering team will reach out to <strong>${data.email}</strong> within 24 hours.</p>
-        <button type="button" class="c-btn c-btn--outline c-btn--sm" id="reset-embedded-form" style="margin-top: 1rem;">Submit Another Inquiry</button>
+        <button type="button" class="c-btn c-btn--outline c-btn--sm" id="reset-embedded-form" style="margin-top: 1rem;">Submit Another Application</button>
       `;
 
       formElement.style.display = 'none';
